@@ -72,4 +72,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 # Title
 ## Overview - What it does
 ## How to get it set up
+$ npm install --save react-router-dom
+or
+$ yarn add react-router-dom
 ## Resources that inspired this
