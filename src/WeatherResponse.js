@@ -59,7 +59,7 @@ const WeatherResponse = (props) => {
       <ul>
         Tahoma: {tahomaValues} 
         <p></p>
-        Mountain Loop: {MountainLoop.temp}
+        Mountain Loop: {mountainLoopValues}
       </ul>
     </div>
 
