@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Select from 'react-select';
 import WeatherRegion from './WeatherRegion';
+import ls from 'local-storage';
+
 
 const WeatherResponse = (props) => { 
   const fullUrl = 'http://127.0.0.1:5000/';
@@ -21,26 +23,25 @@ const WeatherResponse = (props) => {
       setErrors(error.message);
       console.log(error.message);
     })
-  }, [])
+  }, []);
+
+
 
   // SPREAD OPERATOR...HASH OK? const { region1, region2, ...others } = regions
 
   console.log(regions)
 
-  const { Tahoma, MountainLoop } = regions
+  const [ tahoma, mountainLoop ] = regions
 
-  console.log(Tahoma)
+  console.log(tahoma)
 
-  // Object.keys({'key': 'value'})
-  // if (Tahoma.UndefinedVariable) {
-  //   Object.assign(Tahoma.UndefinedVariable, {})
-  // }
 
-  const tahomaValues = Object.values(Tahoma);
+  // keeps page robust for missing data
+  const tahomaValues = tahoma ? Object.values(tahoma) : ["Loading"];
 
   console.log(tahomaValues)
 
-  const mountainLoopValues = Object.values(MountainLoop);
+  const mountainLoopValues = mountainLoop ? Object.values(mountainLoop) : ["Loading"];
   console.log(mountainLoopValues)
 
 
