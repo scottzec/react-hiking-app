@@ -30,19 +30,27 @@ const WeatherResponse = (props) => {
   // videos.sort((a,b) => (a.title > b.title) ? 1 : -1)
 
 
+//   <div className='weatherRegions'>
+//   <ul>
+//     {Object.entries(regions).map(([key, value]) => {
+//       return (<li >{<WeatherRegion key={key} value={value}/>}</li>);
+//       })};
+//   </ul>
+// </div>
 
-
+  const { weather, temp } = regions
 
   return (
     <div className='weatherRegions'>
       <ul>
-        {Object.entries(regions).map(([key, value]) => {
-          return ( 
-            key, value
-          );
-          })};
+        Weather: {weather}
+        <p></p>
+        Temperature: {temp}
       </ul>
     </div>
+
+
+
   )
 
 

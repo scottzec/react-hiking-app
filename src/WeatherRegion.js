@@ -10,7 +10,10 @@ const WeatherRegion = (props) => {
   <div> 
     
     <p>
-    <button 
+      <div>
+        <p> {props.value}</p>
+      </div>
+    {/* <button 
       onClick={() => {props.weatherCallback(
         {id: props.id, 
         icon: props.icon,
@@ -23,7 +26,7 @@ const WeatherRegion = (props) => {
     > 
       <img src={props.image_url} alt={props.title}/>
       <p>Select {props.title}</p>
-    </button>
+    </button> */}
     <p> </p>
     </p>
     </div>
@@ -37,6 +40,8 @@ WeatherRegion.propTypes = {
   icon: PropTypes.string,
   temp: PropTypes.string,
   weather: PropTypes.string,
+  key: PropTypes.string,
+  value: PropTypes.string,
   weatherCallback: PropTypes.func.isRequired
 }
 
