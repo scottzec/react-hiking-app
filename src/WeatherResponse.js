@@ -38,14 +38,28 @@ const WeatherResponse = (props) => {
 //   </ul>
 // </div>
 
-  const { weather, temp } = regions
+  // const { region1, region2, ...others } = regions
+
+  // const { weather, temp } = regions
+
+  const { Tahoma, MountainLoop } = regions
+
+  console.log(Tahoma)
+
+  const tahomaValues = Object.values(Tahoma)
+
+  console.log(tahomaValues)
+
+  const mountainLoopValues = Object.values(MountainLoop)
+  console.log(mountainLoopValues)
+
 
   return (
     <div className='weatherRegions'>
       <ul>
-        Weather: {weather}
+        Tahoma: {tahomaValues} 
         <p></p>
-        Temperature: {temp}
+        Mountain Loop: {MountainLoop.temp}
       </ul>
     </div>
 
