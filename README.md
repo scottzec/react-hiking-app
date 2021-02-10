@@ -75,4 +75,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 $ npm install --save react-router-dom
 or
 $ yarn add react-router-dom
+
+???Maybe npm i react-select
 ## Resources that inspired this
