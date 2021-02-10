@@ -23,34 +23,24 @@ const WeatherResponse = (props) => {
     })
   }, [])
 
-  // const options = videos.map( (video) => {
-  //   return (<LibraryEntry id={video.id} name={video.name}/>);
-  // })
+  // SPREAD OPERATOR...HASH OK? const { region1, region2, ...others } = regions
 
-  // videos.sort((a,b) => (a.title > b.title) ? 1 : -1)
-
-
-//   <div className='weatherRegions'>
-//   <ul>
-//     {Object.entries(regions).map(([key, value]) => {
-//       return (<li >{<WeatherRegion key={key} value={value}/>}</li>);
-//       })};
-//   </ul>
-// </div>
-
-  // const { region1, region2, ...others } = regions
-
-  // const { weather, temp } = regions
+  console.log(regions)
 
   const { Tahoma, MountainLoop } = regions
 
   console.log(Tahoma)
 
-  const tahomaValues = Object.values(Tahoma)
+  // Object.keys({'key': 'value'})
+  // if (Tahoma.UndefinedVariable) {
+  //   Object.assign(Tahoma.UndefinedVariable, {})
+  // }
+
+  const tahomaValues = Object.values(Tahoma);
 
   console.log(tahomaValues)
 
-  const mountainLoopValues = Object.values(MountainLoop)
+  const mountainLoopValues = Object.values(MountainLoop);
   console.log(mountainLoopValues)
 
 
@@ -62,38 +52,7 @@ const WeatherResponse = (props) => {
         Mountain Loop: {mountainLoopValues}
       </ul>
     </div>
-
-
-
   )
-
-
-        {/* // REFERENCE WITH MAP */}
-      {/* <ul>
-        {regions.map( (region) => {
-          return (<li key={region.id}>{<WeatherRegion id={region.id} icon={region.icon} temp={region.temp} weather={region.weather} weatherCallback={props.weatherCallback} />}</li>);
-          })
-        }
-      </ul> */}
-
-
-      // if ( ! videos) {
-      //   return (errors)
-      // } else {
-      //   return (
-      //   <ul>
-      //     {videos.map( (video) => {
-      //     return(<li> {video.name} </li>)
-      //   })}
-      //   </ul>)
-      // }
-
-      // return (
-      //   <div className='videoLibrary'>
-      //     {options ? options : errors }
-      //   </div>
-      // )
-  
 
 }
 
@@ -102,3 +61,11 @@ WeatherResponse.propTypes = {
 }
 
 export default WeatherResponse;
+
+//   <div className='weatherRegions'>
+//   <ul>
+//     {Object.entries(regions).map(([key, value]) => {
+//       return (<li >{<WeatherRegion key={key} value={value}/>}</li>);
+//       })};
+//   </ul>
+// </div>
