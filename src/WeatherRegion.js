@@ -9,11 +9,10 @@ import './WeatherRegion.css'
 const WeatherRegion = (props) => {
   return (
   <div className="region"> 
-    <p><b>{props.region}</b></p>
+    <p className="region_name">{props.region}</p>
     <p className="region_day"> {props.day}</p>
     <p> {props.icon}</p>
-    <p> {props.weather}</p>
-    <p> {props.temp} °F</p>
+    <p> {props.weather} –– {props.temp} °F</p>
   </div>
   )
 };

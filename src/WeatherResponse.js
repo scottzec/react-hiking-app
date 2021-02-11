@@ -29,7 +29,7 @@ const WeatherResponse = (props) => {
     <div className='weatherRegions'>
       <ul>
         {regions.map( (region) => {
-          return (<li key={region.id}>{<WeatherRegion id={region.id} day={region.day} icon={region.icon} region={region.region} temp={region.temp} weather={region.weather} />}</li>);
+          return (<li className="no_bullet" key={region.id}>{<WeatherRegion id={region.id} day={region.day} icon={region.icon} region={region.region} temp={region.temp} weather={region.weather} />}</li>);
           })
         }
       </ul>
