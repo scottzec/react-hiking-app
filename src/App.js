@@ -7,6 +7,7 @@ import UserList from './UserList.js';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import WeatherResponse from './WeatherResponse.js';
+import Home from './Home.js';
 
 
 const api_url = "http://127.0.0.1:5000/api/users"
@@ -58,6 +59,7 @@ const Main = () => (
 const Home = () => (
   <div className='home'>
     <h1>Welcome to Rainier Weather</h1> 
+    <Home />
   </div>
 );
 
