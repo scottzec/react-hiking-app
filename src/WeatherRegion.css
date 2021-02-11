@@ -1,0 +1,40 @@
+.region {
+  background-color: #f1f2df;
+  font-family: 'Permanent Marker', Helvetica, sans-serif;
+  border: 0.4em solid rgb(28, 25, 25);
+
+  padding: 1em 0;
+  margin: 0.5rem;
+
+  min-height: 250px;
+  min-width: 225px;
+  flex-basis: 18%;
+
+  border-radius: 5px;
+
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  align-items: center;
+}
+
+.region {
+  grid-column-start: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  text-align: center;
+  font-weight: 100;
+  overflow: hidden;
+}
+
+.card__content-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 2rem;
+}
+
+.region_day {
+  font-size: 1.5rem;
+}

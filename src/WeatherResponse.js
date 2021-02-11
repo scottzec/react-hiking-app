@@ -25,37 +25,17 @@ const WeatherResponse = (props) => {
     })
   }, []);
 
-
-
-  // SPREAD OPERATOR...HASH OK? const { region1, region2, ...others } = regions
-
-  console.log(regions)
-
-  const [ tahoma, mountainLoop ] = regions
-
-  console.log(tahoma)
-
-
-  // keeps page robust for missing data
-  const tahomaValues = tahoma ? Object.values(tahoma) : ["Loading"];
-
-  console.log(tahomaValues)
-
-  const mountainLoopValues = mountainLoop ? Object.values(mountainLoop) : ["Loading"];
-  console.log(mountainLoopValues)
-
-
   return (
     <div className='weatherRegions'>
       <ul>
-        Tahoma: {tahomaValues} 
-        <p></p>
-        Mountain Loop: {mountainLoopValues}
+        {regions.map( (region) => {
+          return (<li key={region.id}>{<WeatherRegion id={region.id} day={region.day} icon={region.icon} region={region.region} temp={region.temp} weather={region.weather} />}</li>);
+          })
+        }
       </ul>
     </div>
   )
-
-}
+};
 
 WeatherResponse.propTypes = {
  weatherCallback: PropTypes.func.isRequired
@@ -63,10 +43,17 @@ WeatherResponse.propTypes = {
 
 export default WeatherResponse;
 
-//   <div className='weatherRegions'>
-//   <ul>
-//     {Object.entries(regions).map(([key, value]) => {
-//       return (<li >{<WeatherRegion key={key} value={value}/>}</li>);
-//       })};
-//   </ul>
-// </div>
+
+  // PAST: To return forecast details directly in WeatherResponse instead of passed as props:
+  // const [ tahoma, mountainLoop] = regions
+
+  // Ternary keeps page robust for missing data
+  // const tahomaValues = tahoma ? Object.values(tahoma) : ["Loading"];
+  // const mountainLoopValues = mountainLoop ? Object.values(mountainLoop) : ["Loading"];
+
+  // Return:
+  // <ul>
+  //   {/* Tahoma: {tahomaValues}  */}
+  //   <p></p>
+  //   {/* Mountain Loop: {mountainLoopValues} */}
+  // </ul>
