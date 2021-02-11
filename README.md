@@ -77,4 +77,7 @@ or
 $ yarn add react-router-dom
 
 ???Maybe npm i react-select
+
+npm install local-storage --save
+
 ## Resources that inspired this
