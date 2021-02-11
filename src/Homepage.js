@@ -15,8 +15,8 @@ const Homepage = () => {
         <img src={path} className="Hike-path" alt="hiking path cascades" />
     </header>
   </div>
-  )
+  );
 
-}
+};
 
 export default Homepage;

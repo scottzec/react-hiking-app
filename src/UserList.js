@@ -8,7 +8,7 @@ const UserList = ({users}) => {
     <div className="block">
       {users.map((user, index) => (
         <div key={index}>
-          <p className="user">{user.name}</p>
+          <p className="user">{user.username}</p>
         </div>
       ))}
     </div>
