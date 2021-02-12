@@ -14,9 +14,10 @@ const api_url = "http://127.0.0.1:5000/api/users"
 
 
 function App() {
+  // https://gist.github.com/onedebos/bbf7cd4634bce53103c1cfefa6164637#file-app-js-L62
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
 
   // Check if user is already logged in when app loads
   useEffect(() => {
@@ -29,10 +30,17 @@ function App() {
 
   // Logs out user
   const handleLogout = () => {
-    setUser({});
+    console.log("handleLogout triggered")
+    console.log({user})
+    console.log(Boolean(user));
+    setUser(null); // Only works in short-term
     setUsername("");
     setPassword("");
     localStorage.clear();
+    console.log({user});
+    console.log(Boolean(user));
+    // MAYBE SET A DIFFERENT STATE TO LOGGED OUT?
+    // Somehow user still exists.
   };
 
   // Asynch function to process login request
@@ -44,10 +52,13 @@ function App() {
       "http://127.0.0.1:5000/api/user",
       user
     );
+    console.log("Info on the user")
+    console.log(user); // returns {"username": "four", "password": "four"}
+    console.log(user.username); // returns "four"
     // set the state of the user
     setUser(response.data)
     // store the user in localStorage
-    localStorage.setItem('user', response.data)
+    localStorage.setItem('user', JSON.stringify(response.data))
     console.log(response.data)
   };
   // Add tryCatch block to handle async function errors?
@@ -127,10 +138,11 @@ const Logout = () => (
   <div className='browse'>
     {/* Button to log out? Or does it go below? */}
     {/* <Potential Logout Component /> */}
-    {user.name} is loggged in
-    <button onClick={handleLogout}>logout</button>
+    {/* {user.name} is loggged in
+    <button onClick={handleLogout}>logout</button> */}
   </div>
 );
+
 
 
   // State hook to check for changes in data
@@ -160,6 +172,10 @@ const Logout = () => (
         <NavigationLoggedIn />
         <Main />
           <section>
+          <h3>{user.username} is logged in</h3>
+          <button onClick={handleLogout}>logout</button>
+          
+
           <h4>Your Fellow Weather-Watching Hikers</h4>
           <div>
             {/* passing this data from flask into UserList component, userData passed as props "user" */}
@@ -172,12 +188,14 @@ const Logout = () => (
   }
 
   // return if there's no user
+  //HOW DO I GET THIS TO RETURN AFTER USER IS CLEARED FROM LOCALSTORAGE?
   return (
     <Router>
     <div className="App">
       <NavigationNoUser />
       <Main />
         <section>
+          <h3>You aren't logged in</h3>
         <h4>Your Fellow Weather-Watching Hikers</h4>
         <div>
           {/* passing this data from flask into UserList component, userData passed as props "user" */}
