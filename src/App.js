@@ -3,12 +3,12 @@ import path from './path.jpg'
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import UserList from './UserList.js';
+// import UserList from './UserList.js';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import WeatherResponse from './WeatherResponse.js';
 import Homepage from './Homepage.js';
-import Login from './Login.js'
+import LoginPage from './LoginPage.js'
 
 
 function App() {
@@ -37,11 +37,9 @@ function App() {
     localStorage.clear();
     console.log({user});
     console.log(Boolean(user));
-    // MAYBE SET A DIFFERENT STATE TO LOGGED OUT?
-    // Somehow user still exists.
   };
 
-  // Asynch function to process login request
+  // // Asynch function to process login request
   const handleSubmit = async e => {
     e.preventDefault();
     const user = { username, password };
@@ -59,20 +57,13 @@ function App() {
     localStorage.setItem('user', JSON.stringify(response.data))
     console.log(response.data)
   };
-  // Add tryCatch block to handle async function errors?
+  // // Add tryCatch block to handle async function errors?
 
 
 // CONNECTION TO WEATHER API. DO I NEED A CALLBACK? WHAT WOULD BE CLICKED?
 // 1. pass down function all the way to entry
 // 2. make button to be able to select them
 // 3. pass data back 
-// const onClickLibraryCallback = (video) => {
-//   setSelectedVideoID(video.id);
-//   setSelectedVideoTitle(video.title);
-//   console.log('onClickLibraryCallback was called')
-// }
-
-
 
 
 // NAV STUFF
@@ -98,8 +89,6 @@ const NavigationLoggedIn = () => (
   </nav>
 );
 
-
-
 const Main = () => (
   <Switch>
     <Route exact path='/' component={Home}></Route>
@@ -107,13 +96,12 @@ const Main = () => (
     <Route exact path='/login' component={Login}></Route>
     {/* <Route exact path='/create' component={Create}></Route>
     <Route exact path='/settings' component={Settings}></Route> */}
-    <Route exact path='/logout' onClick={handleLogout} component={Logout}></Route>
+    <Route exact path='/logout' component={Logout}></Route>
   </Switch>
 );
 
 const Home = () => (
   <div className='home'>
-    {/* <h1>Welcome to Rainier Weather</h1>  */}
     <Homepage />
   </div>
 );
@@ -128,16 +116,13 @@ const Browse = () => (
 const Login = () => (
   <div className='home'>
 {/* Button to just log-in? */}
-    {/* <Login /> */}
+    {/* <LoginPage /> */}
   </div>
 );
 
 const Logout = () => (
   <div className='browse'>
-    {/* Button to log out? Or does it go below? */}
-    {/* <Potential Logout Component /> */}
-    {/* {user.name} is loggged in
-    <button onClick={handleLogout}>logout</button> */}
+    {/* Logged in as {user.username} */}
   </div>
 );
 
@@ -148,11 +133,11 @@ const Logout = () => (
       <Router>
       <div className="App">
         <NavigationLoggedIn />
-        <Main />
-          <section>
-          <h3>Logged in as {user.username}</h3>
-          <button onClick={handleLogout}>Logout</button>
+        <section>
+          <h3>Logged in as {user.username}</h3>          
         </section>
+        <Main />
+          
       </div>
       </Router>
     );
@@ -165,12 +150,12 @@ const Logout = () => (
       <NavigationNoUser />
       <Main />
         <section>
-          <h3>Logged out</h3>
+          {/* <h3>Logged out</h3> */}
       </section>
 
       <section>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="username">Username: </label>
+          <label htmlFor="username">Username: </label>  
             <input
               type="text"
               value={username}
