@@ -159,18 +159,19 @@ const Logout = () => (
             <input
               type="text"
               value={username}
-              placeholder="enter a username"
+              placeholder="enter username"
               onChange={({ target }) => setUsername(target.value)}
             />
           <div>
-            <label htmlFor="password">password: </label>
+            <label htmlFor="password">Password: </label>
             <input
               type="password"
               value={password}
-              placeholder="enter a password"
+              placeholder="enter password"
               onChange={({ target }) => setPassword(target.value)}
             />
           </div>
+          <p></p>
           <button type="submit">Login</button>
         </form>
       </section>
