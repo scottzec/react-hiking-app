@@ -93,7 +93,7 @@ const NavigationLoggedIn = () => (
       <li><NavLink exact activeClassName="current" to='/'>Home</NavLink></li>
       <li><NavLink exact activeClassName="current" to='/browse'>Browse Regions</NavLink></li>
       <li><NavLink exact activeClassName="current" to='/settings'>Settings</NavLink></li>
-      <li><NavLink exact activeClassName="current" to='/logout'>Logout</NavLink></li>
+      <li><NavLink exact onClick={handleLogout} activeClassName="current" to='/logout'>Logout</NavLink></li>
     </ul>
   </nav>
 );
@@ -107,7 +107,7 @@ const Main = () => (
     <Route exact path='/login' component={Login}></Route>
     {/* <Route exact path='/create' component={Create}></Route>
     <Route exact path='/settings' component={Settings}></Route> */}
-    <Route exact path='/logout' component={Logout}></Route>
+    <Route exact path='/logout' onClick={handleLogout} component={Logout}></Route>
   </Switch>
 );
 
