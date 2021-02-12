@@ -10,8 +10,6 @@ import WeatherResponse from './WeatherResponse.js';
 import Homepage from './Homepage.js';
 import Login from './Login.js'
 
-const api_url = "http://127.0.0.1:5000/api/users"
-
 
 function App() {
   // https://gist.github.com/onedebos/bbf7cd4634bce53103c1cfefa6164637#file-app-js-L62
@@ -144,26 +142,6 @@ const Logout = () => (
 );
 
 
-
-  // State hook to check for changes in data
-  const [userData, setUserData] = useState([]); 
-  // userData is data we retrieve via Flask (response.data)
-
-  // Effect hook to check for changes in data
-  useEffect(() => {
-    axios.get(api_url)
-    .then((response) => {
-      const userList = response.data;
-      setUserData(userList);
-    })
-    .catch((error) => {
-      const message = `User list did not load. ${error.message}`
-      console.log(message);
-    })
-  }, []);
-
-
-
   // return this if there is a user
   if (user) {
     return (
@@ -172,15 +150,8 @@ const Logout = () => (
         <NavigationLoggedIn />
         <Main />
           <section>
-          <h3>{user.username} is logged in</h3>
-          <button onClick={handleLogout}>logout</button>
-          
-
-          <h4>Your Fellow Weather-Watching Hikers</h4>
-          <div>
-            {/* passing this data from flask into UserList component, userData passed as props "user" */}
-            <UserList users={userData}></UserList>
-          </div>
+          <h3>Logged in as {user.username}</h3>
+          <button onClick={handleLogout}>Logout</button>
         </section>
       </div>
       </Router>
@@ -188,19 +159,13 @@ const Logout = () => (
   }
 
   // return if there's no user
-  //HOW DO I GET THIS TO RETURN AFTER USER IS CLEARED FROM LOCALSTORAGE?
   return (
     <Router>
     <div className="App">
       <NavigationNoUser />
       <Main />
         <section>
-          <h3>You aren't logged in</h3>
-        <h4>Your Fellow Weather-Watching Hikers</h4>
-        <div>
-          {/* passing this data from flask into UserList component, userData passed as props "user" */}
-          <UserList users={userData}></UserList>
-        </div>
+          <h3>Logged out</h3>
       </section>
 
       <section>
@@ -228,5 +193,31 @@ const Logout = () => (
     </Router>
   );
 }
+
+//CODE TO RETURN USER LIST
+// const api_url = "http://127.0.0.1:5000/api/users"
+  // // State hook to check for changes in data
+  // const [userData, setUserData] = useState([]); 
+  // // userData is data we retrieve via Flask (response.data)
+
+  // // Effect hook to check for changes in data
+  // useEffect(() => {
+  //   axios.get(api_url)
+  //   .then((response) => {
+  //     const userList = response.data;
+  //     setUserData(userList);
+  //   })
+  //   .catch((error) => {
+  //     const message = `User list did not load. ${error.message}`
+  //     console.log(message);
+  //   })
+  // }, []);
+
+// User List
+// <h4>Your Fellow Weather-Watching Hikers</h4>
+//         <div>
+//           {/* passing this data from flask into UserList component, userData passed as props "user" */}
+//           <UserList users={userData}></UserList>
+//         </div>
 
 export default App;
