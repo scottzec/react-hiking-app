@@ -53,17 +53,17 @@ const WeatherResponse = (props) => {
 // instead of passing down thru multiple layers, you just have it jump.
   // URL/props.userRegion
 
-
+    // SHOULD BE IN APP.JS, PASSED DOWN VIA PROPS FOR DEPLOYMENT
   const fullUrl = `http://127.0.0.1:5000/weather/${regionHolder}`
-  const [regions, setRegions] = useState([]);
+  const [region, setRegion] = useState(null);
   const [errors, setErrors] = useState(null);
 
   useEffect (() => {
     axios.get(fullUrl)
     .then((response) => {
-      const weatherList = response.data;
-      setRegions(weatherList);
-      console.log(regions)
+      const regionWeather = response.data;
+      setRegion(regionWeather);
+      console.log(region)
     })
     .catch((error) => {
       setErrors(error.message);
@@ -71,18 +71,27 @@ const WeatherResponse = (props) => {
     })
   }, []);
 
+  // if we do have our region in the first statement, then render what's after the &&
+  // if region exists, then we pass the region's info to the weatherRegion for rendering
+  // React is stupid, it runs the whole page and in asynch, we have to check
   return (
-    <div className='weatherRegions'>
-      {/* <p>{regionHolder}</p> */}
-      <p>{regions}</p>
-      {/* <ul>
-        {regions.map( (region) => {
-          return (<li className="no_bullet" key={region.id}>{<WeatherRegion id={region.id} day={region.day} icon={region.icon} region={region.region} temp={region.temp} weather={region.weather} />}</li>);
-          })
-        }
-      </ul> */}
-    </div>
+    region && <WeatherRegion id={region.id} day={region.day} icon={region.icon} region={region.region} temp={region.temp} weather={region.weather} />
   )
+
+  // return (
+  //   <div className='weatherRegions'>
+  //     {/* <p>{regionHolder}</p> */}
+  //     <p>{region && region.region}</p>
+
+  //     {/* // return (<li className="no_bullet" key={region.id}>{<WeatherRegion id={region.id} day={region.day} icon={region.icon} region={region.region} temp={region.temp} weather={region.weather} />}</li>); */}
+
+  //       {() => {
+  //         return (<li className="no_bullet" key={region.id}>{<WeatherRegion id={region.id} day={region.day} icon={region.icon} region={region.region} temp={region.temp} weather={region.weather} />}</li>);
+  //         })
+  //       }
+  //     </ul>
+  //   </div>
+  // )
 };
 
 WeatherResponse.propTypes = {

@@ -35,6 +35,7 @@ function App() {
     console.log({user})
     console.log(Boolean(user));
     setUser(null); // Only works in short-term
+    setUserID("");
     setUsername("");
     setPassword("");
     localStorage.clear();

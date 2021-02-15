@@ -10,11 +10,13 @@ import ls from 'local-storage';
 const UserResponse = (props) => { 
   const fullUrl = `http://127.0.0.1:5000/api/regions/${props.userID}`; 
   //filter by user_id
+  // SHOULD BE IN APP.JS, PASSED DOWN VIA PROPS FOR DEPLOYMENT
 
   const [userRegions, setUserRegions] = useState([]);
   const [errors, setErrors] = useState(null);
 
   useEffect (() => {
+    if(props.userID!=="") { //empty strings are falsy in JS
     axios.get(fullUrl)
     .then((response) => {
       const userRegionsList = response.data;
@@ -22,13 +24,19 @@ const UserResponse = (props) => {
       setUserRegions(userRegionsList);
       console.log("User Regions");
       console.log(userRegionsList);
-      console.log(userRegions); // userRegions = [ {}, {}]
+      // console.log(userRegions); // userRegions = [ {}, {}]
     })
     .catch((error) => {
       setErrors(error.message);
       console.log(error.message);
-    })
-  }, []);
+    })}
+    else{
+      setUserRegions([])
+      // Could change this to return all regions
+    }
+  }, [fullUrl, props.userID]); 
+  //if that userID changes, re-runs usereffect. If null, shouldnt get any regions back (props.userID)
+  
 
   return (
     <div className='weatherRegions'>
