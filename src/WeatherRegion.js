@@ -9,6 +9,7 @@ import './WeatherRegion.css'
 const WeatherRegion = (props) => {
   return (
   <div className="region"> 
+    <p>"WEATHER REGION"</p>
     <p className="region_name">{props.region}</p>
     <p className="region_day"> {props.day}</p>
     {/* <p> {props.icon}</p> */}
@@ -16,8 +17,9 @@ const WeatherRegion = (props) => {
   </div>
   )
 };
+{/* <p>{props.regionSingle}</p> 
 
-// for callback, need to have id come back up so we can pass it to flask (???? Maybe not)
+// for callback, need to have id come back up so we can pass it to flask (???? Maybe not) */}
 // hold onto it (setState) then pass it
 WeatherRegion.propTypes = {
   day: PropTypes.string,
@@ -26,6 +28,7 @@ WeatherRegion.propTypes = {
   temp: PropTypes.string,
   weather: PropTypes.string,
   id: PropTypes.string,
+  regionSingle: PropTypes.object
   // weatherCallback: PropTypes.func.isRequired
 }
 

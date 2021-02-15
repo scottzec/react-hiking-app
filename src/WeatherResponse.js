@@ -42,10 +42,11 @@ import ls from 'local-storage';
 //   )
 // };
 
+// let regionsArray = []
 
 const WeatherResponse = (props) => { 
   const regionHolder = props.userRegion
-  // console.log(regionHolder)
+  console.log(regionHolder)
 
 // Chris on how to avoid passing them down individually
 // passes down the array as props and they could read it & use callback functions
@@ -57,13 +58,20 @@ const WeatherResponse = (props) => {
   const fullUrl = `http://127.0.0.1:5000/weather/${regionHolder}`
   const [regions, setRegions] = useState([]);
   const [errors, setErrors] = useState(null);
+  const [regionsArray, setRegionsArray] = useState([]);
 
   useEffect (() => {
     axios.get(fullUrl)
     .then((response) => {
       const weatherList = response.data;
-      setRegions(weatherList);
+      console.log(weatherList);
+      console.log("Here come regions")
       console.log(regions)
+      console.log(weatherList)
+      regionsArray.push(weatherList)
+      // Error: cannot pass object --> setRegions(weatherList);
+      console.log(regionsArray)
+      // setRegionsArray(regionsArray);
     })
     .catch((error) => {
       setErrors(error.message);
@@ -71,16 +79,23 @@ const WeatherResponse = (props) => {
     })
   }, []);
 
+  setRegionsArray(regionsArray);
+
+  console.log(regionsArray)
+  const test = ['test']
+
   return (
     <div className='weatherRegions'>
       {/* <p>{regionHolder}</p> */}
-      <p>{regions}</p>
-      {/* <ul>
-        {regions.map( (region) => {
+      <p>{regionsArray}</p>
+      <p>{test}</p>
+      {/* <p>{<WeatherRegion regionSingle={regions} />}</p>; */}
+      <ul>
+        {regionsArray.map( (region) => {
           return (<li className="no_bullet" key={region.id}>{<WeatherRegion id={region.id} day={region.day} icon={region.icon} region={region.region} temp={region.temp} weather={region.weather} />}</li>);
           })
         }
-      </ul> */}
+      </ul>
     </div>
   )
 };
