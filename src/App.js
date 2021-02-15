@@ -15,6 +15,8 @@ function App() {
   // https://gist.github.com/onedebos/bbf7cd4634bce53103c1cfefa6164637#file-app-js-L62
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // ALSO FOR USER_ID?
+  const [userID, setUserID] = useState("");
   const [user, setUser] = useState(null);
 
   // Check if user is already logged in when app loads
@@ -53,9 +55,15 @@ function App() {
     console.log(user.username); // returns "four"
     // set the state of the user
     setUser(response.data)
+    setUserID(response.data.id)
+    console.log('this is userID')
+    console.log(userID)
+    console.log(response.data.id)
     // store the user in localStorage
     localStorage.setItem('user', JSON.stringify(response.data))
     console.log(response.data)
+    console.log("printing local storage")
+    console.log(JSON.parse(localStorage.getItem("user"))["id"])
   };
   // // Add tryCatch block to handle async function errors?
 
@@ -109,7 +117,7 @@ const Home = () => (
 const Browse = () => (
   <div className='browse'>
     <h1>Browse the Weather</h1>
-    <WeatherResponse />
+    <WeatherResponse userID={userID}/>
   </div>
 );
 
