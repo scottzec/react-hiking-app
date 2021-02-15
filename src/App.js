@@ -6,9 +6,10 @@ import axios from 'axios';
 // import UserList from './UserList.js';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import WeatherResponse from './WeatherResponse.js';
+// import WeatherResponse from './WeatherResponse.js';
 import Homepage from './Homepage.js';
 import LoginPage from './LoginPage.js'
+import UserResponse from './UserResponse.js'
 
 
 function App() {
@@ -117,7 +118,7 @@ const Home = () => (
 const Browse = () => (
   <div className='browse'>
     <h1>Browse the Weather</h1>
-    <WeatherResponse userID={userID}/>
+    <UserResponse userID={userID}/>
   </div>
 );
 
