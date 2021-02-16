@@ -7,13 +7,22 @@ import './WeatherRegion.css'
 
 
 const WeatherRegion = (props) => {
+  console.log(props.region)
+  console.log(props.weather)
+  console.log(typeof props.region)
+  if (props.region!=="none") {
+    return (
+    <div className="region"> 
+      <p className="region_name">{props.region}</p>
+      <p className="region_day"> {props.day}</p>
+      {/* <p> {props.icon}</p> */}
+      <p> {props.weather} –– {props.temp} °F</p>
+    </div>
+    )
+  }
+
   return (
-  <div className="region"> 
-    <p className="region_name">{props.region}</p>
-    <p className="region_day"> {props.day}</p>
-    {/* <p> {props.icon}</p> */}
-    <p> {props.weather} –– {props.temp} °F</p>
-  </div>
+    null
   )
 };
 

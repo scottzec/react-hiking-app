@@ -39,7 +39,6 @@ const UserResponse = (props) => {
 
   return (
     <div className='weatherRegions'>
-      {/* <p>{props.userID}</p> */}
       <ul>
         {userRegions.map( (region) => {
         return (<li className="no_bullet" key={region.id}>{<WeatherResponse baseURL={props.baseURL} userRegion={region.region_name}/>} </li>);
