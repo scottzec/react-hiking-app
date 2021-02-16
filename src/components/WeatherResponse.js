@@ -18,6 +18,7 @@ const WeatherResponse = (props) => {
 
     // SHOULD BE IN APP.JS, PASSED DOWN VIA PROPS FOR DEPLOYMENT
   const fullUrl = `${props.baseURL}/weather/${regionHolder}`
+  console.log(fullUrl)
   const [region, setRegion] = useState(null);
   const [errors, setErrors] = useState(null);
 
