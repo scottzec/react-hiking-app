@@ -1,5 +1,4 @@
 // import logo from './logo.svg';
-import path from './path.jpg'
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -7,9 +6,10 @@ import axios from 'axios';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 // import WeatherResponse from './WeatherResponse.js';
-import Homepage from './Homepage.js';
-import LoginPage from './LoginPage.js'
-import UserResponse from './UserResponse.js'
+import Homepage from './components/Homepage.js';
+import LoginPage from './components/LoginPage.js'
+import UserResponse from './components/UserResponse.js'
+
 
 
 function App() {
