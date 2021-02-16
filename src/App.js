@@ -54,6 +54,7 @@ function App() {
   const handleSubmit = async e => {
     e.preventDefault();
     const user = { username, password };
+    console.log(user)
     // send the username and password to the server
     const response = await axios.post(
       `${BASE_URL}/api/user`,
