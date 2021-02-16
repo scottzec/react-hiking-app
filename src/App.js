@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -10,10 +9,18 @@ import Homepage from './components/Homepage.js';
 import LoginPage from './components/LoginPage.js'
 import UserResponse from './components/UserResponse.js'
 
+// let BASE_URL = ''
+// if (!process.env.NODE_ENV || process.env.NODE_ENV === 'production') {
+//   BASE_URL = "http://127.0.0.1:5000";
+// } else {
+//   BASE_URL = 'https://*****.herokuapp.com/';
+//   console.log(BASE_URL)
+// }
+
+const BASE_URL = "http://127.0.0.1:5000"
 
 
 function App() {
-  // https://gist.github.com/onedebos/bbf7cd4634bce53103c1cfefa6164637#file-app-js-L62
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   // ALSO FOR USER_ID?
@@ -49,7 +56,7 @@ function App() {
     const user = { username, password };
     // send the username and password to the server
     const response = await axios.post(
-      "http://127.0.0.1:5000/api/user",
+      `${BASE_URL}/api/user`,
       user
     );
     console.log("Info on the user")
@@ -119,7 +126,7 @@ const Home = () => (
 const Browse = () => (
   <div className='browse'>
     <h1>Browse the Weather</h1>
-    <UserResponse userID={userID}/>
+    <UserResponse userID={userID} baseURL={BASE_URL} />
   </div>
 );
 
