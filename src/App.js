@@ -13,7 +13,7 @@ let BASE_URL = ''
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'production') {
   BASE_URL = "http://127.0.0.1:5000";
 } else {
-  BASE_URL = "https://hiking-weather-api.herokuapp.com/";
+  BASE_URL = "https://hiking-weather-api.herokuapp.com";
   console.log(BASE_URL)
 }
 
