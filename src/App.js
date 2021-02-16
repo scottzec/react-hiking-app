@@ -9,15 +9,15 @@ import Homepage from './components/Homepage.js';
 import LoginPage from './components/LoginPage.js'
 import UserResponse from './components/UserResponse.js'
 
-// let BASE_URL = ''
-// if (!process.env.NODE_ENV || process.env.NODE_ENV === 'production') {
-//   BASE_URL = "http://127.0.0.1:5000";
-// } else {
-//   BASE_URL = 'https://*****.herokuapp.com/';
-//   console.log(BASE_URL)
-// }
+let BASE_URL = ''
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'production') {
+  BASE_URL = "http://127.0.0.1:5000";
+} else {
+  BASE_URL = "https://hiking-weather-api.herokuapp.com/";
+  console.log(BASE_URL)
+}
 
-const BASE_URL = "http://127.0.0.1:5000"
+// const BASE_URL = "http://127.0.0.1:5000"
 
 
 function App() {
