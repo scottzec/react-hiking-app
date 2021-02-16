@@ -6,8 +6,9 @@ import { NavLink, Switch, Route } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 // import WeatherResponse from './WeatherResponse.js';
 import Homepage from './components/Homepage.js';
-import LoginPage from './components/LoginPage.js'
-import UserResponse from './components/UserResponse.js'
+import LoginPage from './components/LoginPage.js';
+import UserResponse from './components/UserResponse.js';
+import RegionsAdd from './components/RegionsAdd.js'
 
 // let BASE_URL = ''
 // if (!process.env.NODE_ENV || process.env.NODE_ENV === 'production') {
@@ -112,8 +113,8 @@ const Main = () => (
     <Route exact path='/' component={Home}></Route>
     <Route exact path='/browse' component={Browse}></Route>
     <Route exact path='/login' component={Login}></Route>
-    {/* <Route exact path='/create' component={Create}></Route>
-    <Route exact path='/settings' component={Settings}></Route> */}
+    {/* <Route exact path='/create' component={Create}></Route> */}
+    <Route exact path='/settings' component={Settings}></Route>
     <Route exact path='/logout' component={Logout}></Route>
   </Switch>
 );
@@ -128,6 +129,13 @@ const Browse = () => (
   <div className='browse'>
     <h1>Browse the Weather</h1>
     <UserResponse userID={userID} baseURL={BASE_URL} />
+  </div>
+);
+
+const Settings = () => (
+  <div className='browse'>
+    <h1>Add Weather Regions to your Account</h1>
+    <RegionsAdd baseURL={BASE_URL} userID={userID}/>
   </div>
 );
 

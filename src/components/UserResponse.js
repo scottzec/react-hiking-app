@@ -10,7 +10,6 @@ import ls from 'local-storage';
 const UserResponse = (props) => { 
   const fullUrl = `${props.baseURL}/api/regions/${props.userID}`; 
   //filter by user_id
-  // SHOULD BE IN APP.JS, PASSED DOWN VIA PROPS FOR DEPLOYMENT
 
   const [userRegions, setUserRegions] = useState([]);
   const [errors, setErrors] = useState(null);
