@@ -14,9 +14,9 @@ const WeatherRegion = (props) => {
     return (
     <div className="region"> 
       <p className="region_name">{props.region}</p>
-      <p className="region_day"> {props.day}</p>
+      <p className="region_weather"> {props.weather}</p>
       {/* <p> {props.icon}</p> */}
-      <p> {props.weather} –– {props.temp} °F</p>
+      <p className="region_other"> {props.day}'s high temperature ––– feels like {props.temp} °F </p>
     </div>
     )
   }

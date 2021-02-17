@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import './WeatherRegion.css';
 // import RegionEntry from './RegionEntry.js'
 
 const RegionsAdd = (props) => { 
@@ -37,16 +38,54 @@ const RegionsAdd = (props) => {
   return (
   <div className='weatherRegions'>
     <section>
+        <table> 
+        {/* style="width:100%" */}
+          <thead>
+            <th>Region</th>
+            <th>Abbreviation</th>
+          </thead>
+          <tbody>
+            <td>Tahoma</td>
+            <td>tahoma</td>
+          </tbody>
+          <tbody>
+            <td>Mountain Loop Highway</td>
+            <td>mntnloop</td>
+          </tbody>
+          <tbody>
+            <td>Koma Kulshan</td>
+            <td>kulshan</td>
+          </tbody>
+          <tbody>
+            <td>Big Quilcene River</td>
+            <td>quilcene</td>
+          </tbody>
+          <tbody>
+            <td>Skykomish</td>
+            <td>skykomish</td>
+          </tbody>
+          <tbody>
+            <td>Teanaway River Valley</td>
+            <td>teanaway</td>
+          </tbody>
+          <tbody>
+            <td>Stetattle Creek</td>
+            <td>stetattle</td>
+          </tbody>
+        </table>
+    </section>
+    <p></p>
+    <section>
       <form onSubmit={handleRegionSubmit}> 
-        <label htmlFor="region_name">Region: </label>  
+        <label htmlFor="region_name">Region Abbreviation: </label>  
           <input
             type="text"
             value={regionName}
-            placeholder="enter region name"
+            placeholder="enter abbreviation"
             onChange={({ target }) => setRegionName(target.value)}
           />
         <p></p>
-        <button type="submit">Add Region</button>
+        <button type="submit">Add Each Region</button>
       </form>
     </section>
   </div>
